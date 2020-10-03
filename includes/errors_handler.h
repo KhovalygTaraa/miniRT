@@ -6,12 +6,12 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 17:20:58 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/02 22:54:26 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/02 23:02:27 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERRORSHANDLER_H
-# define ERRORSHANDLER_H
+#ifndef ERRORS_HANDLER_H
+# define ERRORS_HANDLER_H
 # define WRONG_ARGS 0
 # define WRONG_EXTENSION 1
 # define CANNOT_OPEN_FILE 2

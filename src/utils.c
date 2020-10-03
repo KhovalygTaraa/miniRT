@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hovalygtaraa <hovalygtaraa@student.42.f    +#+  +:+       +#+        */
+/*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 11:22:18 by hovalygtara       #+#    #+#             */
-/*   Updated: 2020/10/02 21:00:57 by hovalygtara      ###   ########.fr       */
+/*   Updated: 2020/10/03 00:08:27 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,29 @@ int     is_correct(t_scene *scene)
         while(scene->param[i][a] != '\0')
         {
             if ((!ft_isdigit(scene->param[i][a]) && scene->param[i][a] != ',' && 
-            scene-> param[i][a] != '.' && scene->param[i][a] != '-') || b != 2)
+            scene->param[i][a] != '.' && scene->param[i][a] != '-'))
                 return (0);
             if (scene->param[i][a] == ',')
                 b++;
             a++;
         }
+		if (b == 1 || b >= 3)
+			return (0);
         i++;
     }
     return (1);
+}
+
+int		rgb_range(t_rgb rgb)
+{
+	int		i;
+
+	i = 1;
+	if (rgb.r < 0 || rgb.r > 255)
+		i = 0;
+	if (rgb.g < 0 || rgb.g > 255)
+		i = 0;
+	if (rgb.b < 0 || rgb.b > 255)
+		i = 0;
+	return (i);
 }

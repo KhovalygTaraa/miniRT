@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 16:44:53 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/02 22:53:57 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/02 23:04:54 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ static void		ft_perror(char *error)
 static void		print_error(int error_id)
 {
 	if (error_id == WRONG_ARGS)
-		ft_perror("Wrong arguments. Use this forms:
-		./a.out <arg.rt> or ./a.out <arg.rt> <--save>");
+		ft_perror("Wrong arguments. Use form: a.out <*.rt> or a.out <*.rt> <--save>");
 	else if (error_id == WRONG_EXTENSION)
 		ft_perror("Wrong extension of rt file. Extension should be \".rt\"");
 	else if (error_id == CANNOT_OPEN_FILE)

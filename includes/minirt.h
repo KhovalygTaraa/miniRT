@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hovalygtaraa <hovalygtaraa@student.42.f    +#+  +:+       +#+        */
+/*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/01 22:51:10 by hovalygtara      ###   ########.fr       */
+/*   Updated: 2020/10/03 00:29:37 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <math.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include "errorsHandler.h"
+# include "errors_handler.h"
 # include "structures.h"
 # include "libft.h"
 
@@ -35,4 +35,6 @@ char    **free_2array(char **array);
 int     count_2array(char **array);
 int     is_correct(t_scene *scene);
 void    define_type(t_scene *t_scene);
+int		rgb_range(t_rgb rgb);
+
 #endif

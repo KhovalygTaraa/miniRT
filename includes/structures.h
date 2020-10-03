@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hovalygtaraa <hovalygtaraa@student.42.f    +#+  +:+       +#+        */
+/*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/02 21:34:34 by hovalygtara      ###   ########.fr       */
+/*   Updated: 2020/10/03 23:27:00 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,17 @@
 
 typedef struct		s_rgb
 {
-	float	r;
-	float	g;
-	float	b;
+	int		r;
+	int		g;
+	int		b;
 }					t_rgb;
+
+typedef struct		s_vec
+{
+	float		x;
+	float		y;
+	float		z;
+}					t_vec;
 
 typedef struct		s_resolution
 {
@@ -36,6 +43,11 @@ typedef struct		s_ambient
 
 typedef struct		s_camera
 {
+	int					num;
+	int					fov;
+	t_vec				view;
+	t_vec				orient;
+	struct s_camera		*next;
 }					t_camera;
 
 typedef struct		s_light
@@ -66,6 +78,7 @@ typedef struct		s_triangle
 
 typedef struct		s_scene
 {
+	t_camera			*cameras;
 	t_resolution		res;
 	t_ambient			amb;
 	int					save;
