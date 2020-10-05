@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 16:15:19 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/04 20:34:41 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/06 00:35:08 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	main(int argc, char **argv)
 	if (argc == 3)
 		scene.save = 1;
 	parsing(argv[1], &scene);
-//	showScene();
+	showScene();
 	return (0);
 }

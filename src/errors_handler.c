@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 16:44:53 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/05 20:49:05 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/06 00:26:02 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@ static void		ft_perror(char *error)
 {
 	write(2, error, ft_strlen(error));
 	write(2, "\n", 1);
+}
+
+static void		print_error2(int error_id)
+{
+	if (error_id == INVALID_SQUARE)
+		ft_perror("Invalid square, please check parameters!");
+	else if (error_id == INVALID_CYLINDER)
+		ft_perror("Invalid cylinder, please check parameters!");
+	else if (error_id == INVALID_TRIANGLE)
+		ft_perror("Invalid triangle, please check parameters!");
+	else 
+		return ;
 }
 
 static void		print_error(int error_id)
@@ -39,7 +51,11 @@ static void		print_error(int error_id)
 	else if (error_id == INVALID_LIGHT)
 		ft_perror("Invalid light, please check parameters!");
 	else if (error_id == INVALID_SPHERE)
-		ft_perror("Invalid sphere, please check parameters!");	
+		ft_perror("Invalid sphere, please check parameters!");
+	else if (error_id == INVALID_PLANE)
+		ft_perror("Invalid plane, please check parameters!");
+	else
+		print_error2(error_id);
 }
 
 void		errors_handler(int error_id, t_scene *scene)

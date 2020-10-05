@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 19:20:38 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/05 21:56:05 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/05 23:57:59 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ t_xyz	parse_xyz(char *str, t_scene *scene)
 	t_xyz	xyz;
 	char	**array;
 
-	if (!(coord = ft_split(str, ',')))
+	if (!(array = ft_split(str, ',')))
 		errors_handler(MALLOC_ERR, scene);
 	xyz.x = ft_atof(array[0]);
 	xyz.y = ft_atof(array[1]);
 	xyz.z = ft_atof(array[2]);
 	free_2array(array);
-	return (array);
+	return (xyz);
 }

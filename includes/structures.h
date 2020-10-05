@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/05 20:38:48 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/05 23:49:13 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,13 @@ typedef struct		s_plane
 	t_rgb			rgb;
 }					t_plane;
 
-typedef struct		s_square 
+typedef struct		s_square
 {
 	t_xyz			coord;
 	t_xyz			orient;
 	float			size;
 	t_rgb			rgb;
 }					t_square;
-
 
 typedef struct		s_cylinder
 {
@@ -103,7 +102,7 @@ typedef struct		s_object
 	t_plane		plane;
 	t_square	square;
 	t_cylinder	cylinder;
-	t_triangle	t_triangle;
+	t_triangle	triangle;
 
 }					t_object;
 

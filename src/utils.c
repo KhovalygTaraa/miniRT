@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 11:22:18 by hovalygtara       #+#    #+#             */
-/*   Updated: 2020/10/04 22:27:34 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/05 23:57:33 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	**free_2array(char **array)
 {
 	int		i;
-	
+
 	if (!array)
 		return (NULL);
 	i = 0;
@@ -56,7 +56,7 @@ void	define_type(t_scene *scene)
 int		count_2array(char **array)
 {
 	int		i;
-	
+
 	i = 0;
 	while (array[i] != NULL)
 		i++;
@@ -68,15 +68,15 @@ int		is_correct(t_scene *scene)
 	int		i;
 	int		a;
 	int		b;
-	
+
 	i = 1;
 	while (scene->param[i] != NULL)
 	{
 		b = 0;
 		a = 0;
-		while(scene->param[i][a] != '\0')
+		while (scene->param[i][a] != '\0')
 		{
-			if ((!ft_isdigit(scene->param[i][a]) && scene->param[i][a] != ',' && 
+			if ((!ft_isdigit(scene->param[i][a]) && scene->param[i][a] != ',' &&
 			scene->param[i][a] != '.' && scene->param[i][a] != '-'))
 				return (0);
 			if (scene->param[i][a] == ',')
