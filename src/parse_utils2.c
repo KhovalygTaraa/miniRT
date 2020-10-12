@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   parse_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 19:20:38 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/05 23:57:59 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/07 01:01:49 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ t_xyz	parse_xyz(char *str, t_scene *scene)
 
 	if (!(array = ft_split(str, ',')))
 		errors_handler(MALLOC_ERR, scene);
-	xyz.x = ft_atof(array[0]);
-	xyz.y = ft_atof(array[1]);
-	xyz.z = ft_atof(array[2]);
+	xyz.x = ft_atod(array[0]);
+	xyz.y = ft_atod(array[1]);
+	xyz.z = ft_atod(array[2]);
 	free_2array(array);
 	return (xyz);
 }

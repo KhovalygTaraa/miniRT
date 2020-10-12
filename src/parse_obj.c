@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 12:38:07 by hovalygtara       #+#    #+#             */
-/*   Updated: 2020/10/05 23:42:34 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/07 01:04:29 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	parse_sphere(t_scene *scene)
 		errors_handler(MALLOC_ERR, scene);
 	obj->id = SPHERE;
 	obj->sphere.coord = parse_xyz(scene->param[1], scene);
-	obj->sphere.diam = ft_atof(scene->param[2]);
+	obj->sphere.diam = ft_atod(scene->param[2]);
 	obj->sphere.rgb = parse_rgb(scene->param[3], scene);
 	if (rgb_range(obj->sphere.rgb) == 0)
 		errors_handler(INVALID_SPHERE, scene);
@@ -59,7 +59,7 @@ void	parse_square(t_scene *scene)
 	obj->id = SQUARE;
 	obj->square.coord = parse_xyz(scene->param[1], scene);
 	obj->square.orient = parse_xyz(scene->param[2], scene);
-	obj->square.size = ft_atof(scene->param[3]);
+	obj->square.size = ft_atod(scene->param[3]);
 	obj->square.rgb = parse_rgb(scene->param[4], scene);
 	if (orient_range(obj->square.orient) == 0)
 		errors_handler(INVALID_SQUARE, scene);
@@ -79,8 +79,8 @@ void	parse_cylinder(t_scene *scene)
 	obj->id = CYLINDER;
 	obj->cylinder.coord = parse_xyz(scene->param[1], scene);
 	obj->cylinder.orient = parse_xyz(scene->param[2], scene);
-	obj->cylinder.diam = ft_atof(scene->param[3]);
-	obj->cylinder.height = ft_atof(scene->param[4]);
+	obj->cylinder.diam = ft_atod(scene->param[3]);
+	obj->cylinder.height = ft_atod(scene->param[4]);
 	obj->cylinder.rgb = parse_rgb(scene->param[5], scene);
 	if (orient_range(obj->cylinder.orient) == 0)
 		errors_handler(INVALID_CYLINDER, scene);

@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/05 23:49:13 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/12 01:42:44 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,19 @@ typedef struct		s_rgb
 
 typedef struct		s_xyz
 {
-	float			x;
-	float			y;
-	float			z;
+	double			x;
+	double			y;
+	double			z;
 }					t_xyz;
+
+typedef struct		s_image
+{
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_lenght;
+	int				endian;
+}					t_image;
 
 typedef struct		s_resolution
 {
@@ -37,7 +46,7 @@ typedef struct		s_resolution
 
 typedef struct		s_ambient
 {
-	float			ratio;
+	double			ratio;
 	t_rgb			rgb;
 	int				is_parsed;
 }					t_ambient;
@@ -47,19 +56,20 @@ typedef struct		s_camera
 	t_xyz			coord;
 	t_xyz			orient;
 	int				fov;
+	t_image			image;
 }					t_camera;
 
 typedef struct		s_light
 {
 	t_xyz			coord;
-	float			bright;
+	double			bright;
 	t_rgb			rgb;
 }					t_light;
 
 typedef struct		s_sphere
 {
 	t_xyz			coord;
-	float			diam;
+	double			diam;
 	t_rgb			rgb;
 }					t_sphere;
 
@@ -74,7 +84,7 @@ typedef struct		s_square
 {
 	t_xyz			coord;
 	t_xyz			orient;
-	float			size;
+	double			size;
 	t_rgb			rgb;
 }					t_square;
 
@@ -82,8 +92,8 @@ typedef struct		s_cylinder
 {
 	t_xyz			coord;
 	t_xyz			orient;
-	float			diam;
-	float			height;
+	double			diam;
+	double			height;
 	t_rgb			rgb;
 }					t_cylinder;
 
@@ -113,8 +123,12 @@ typedef struct		s_scene
 	t_list			*objs_list;
 	t_resolution	res;
 	t_ambient		amb;
+	t_camera		camera;
+	void			*mlx;
+	void			*win_ptr;
 	int				save;
 	char			**param;
+	int				yes;
 }					t_scene;
 
 #endif

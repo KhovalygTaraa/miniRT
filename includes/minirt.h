@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/05 23:55:25 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/12 18:27:29 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,19 @@
 # include <math.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <string.h>
+# include "mlx.h"
 # include "errors_handler.h"
 # include "structures.h"
 # include "libft.h"
 
+void	raytrace(t_camera *camera, t_scene *scene);
+void	start_rt(t_scene *t_scene);
+int		sphere(t_scene *scene, t_camera *camera, t_xyz ray, t_sphere *sp);
+int		plane(t_scene *scene, t_camera *camera, t_xyz ray);
+int		square(t_scene *scene, t_camera *camera, t_xyz ray);
+int		cylinder(t_scene *scene, t_camera *camera, t_xyz ray);
+int		triangle(t_scene *scene, t_camera *camera, t_xyz ray);
 void	parsing(char *rt_file, t_scene *scene);
 void	parse_resolution(t_scene *scene);
 void	parse_ambient(t_scene *scene);
@@ -44,5 +53,15 @@ int		is_correct(t_scene *scene);
 void	define_type(t_scene *scene);
 int		rgb_range(t_rgb rgb);
 int		orient_range(t_xyz xyz);
-
+void	create_camera(t_scene *scene);
+void	switch_camera(t_scene *scene);
+void	show_scene(t_scene *scene);
+void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
+t_xyz	vec_sum(t_xyz vec1, t_xyz vec2);
+t_xyz	vec_sub(t_xyz vec1, t_xyz vec2);
+t_xyz	vec_mpl(t_xyz vec1, double mpl);
+t_xyz	vec_div(t_xyz vec1, double div);
+t_xyz	vec_norm(t_xyz vec);
+double	vec_dot(t_xyz vec1, t_xyz vec2);
+double	vec_length(t_xyz vec);
 #endif

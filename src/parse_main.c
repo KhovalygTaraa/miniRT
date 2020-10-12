@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 17:55:08 by hovalygtara       #+#    #+#             */
-/*   Updated: 2020/10/06 00:34:41 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/07 01:02:37 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	parsing(char *rt_file, t_scene *scene)
 		free(line);
 		line = NULL;
 	}
+	close(fd);
+	if (scene->res.is_parsed == 0)
+		errors_handler(NO_RESOLUTION, scene);
 	/* --> parser checker <--*/
 	/*
 	printf("%d,%d	\n", scene->res.x, scene->res.y);
@@ -113,7 +116,7 @@ void	parse_ambient(t_scene *scene)
 {
 	if ((count_2array(scene->param)) != 3 || is_correct(scene) == 0)
 		errors_handler(INVALID_AMBIENT, scene);
-	scene->amb.ratio = ft_atof(scene->param[1]);
+	scene->amb.ratio = ft_atod(scene->param[1]);
 	scene->amb.rgb = parse_rgb(scene->param[2], scene);
 	scene->amb.is_parsed = 1;
 	if (!rgb_range(scene->amb.rgb))
@@ -132,7 +135,7 @@ void	parse_camera(t_scene *scene)
 		errors_handler(MALLOC_ERR, scene);
 	camera->coord = parse_xyz(scene->param[1], scene);
 	camera->orient = parse_xyz(scene->param[2], scene);
-	camera->fov = ft_atoi(scene->param[3]);
+	camera->fov = ft_atod(scene->param[3]);
 	if (camera->fov < 0 || camera->fov > 180)
 		errors_handler(INVALID_CAMERA, scene);
 	if (orient_range(camera->orient) == 0)
@@ -149,7 +152,7 @@ void	parse_light(t_scene *scene)
 	if (!(light = (t_light*)malloc(sizeof(t_light))))
 		errors_handler(MALLOC_ERR, scene);
 	light->coord = parse_xyz(scene->param[1], scene);
-	light->bright = ft_atof(scene->param[2]);
+	light->bright = ft_atod(scene->param[2]);
 	light->rgb = parse_rgb(scene->param[3], scene);
 	if (light->bright < 0.0 || light->bright > 1.0 ||
 	rgb_range(light->rgb) == 0)

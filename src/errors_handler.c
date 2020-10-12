@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 16:44:53 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/06 00:26:02 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/07 16:19:31 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ static void		print_error2(int error_id)
 		ft_perror("Invalid cylinder, please check parameters!");
 	else if (error_id == INVALID_TRIANGLE)
 		ft_perror("Invalid triangle, please check parameters!");
+	else if (error_id == NO_RESOLUTION)
+		ft_perror("Resolution does not exist, you should add!");
+	else if (error_id == MINILIBX_FAIL)
+		ft_perror("Minilibx initialization fail:(");
+	else if (error_id == MLX_NEW_IMAGE_FAIL)
+		ft_perror("Mlx new image initialization fail:(");
 	else 
 		return ;
 }
