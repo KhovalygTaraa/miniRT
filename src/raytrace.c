@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 01:49:24 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/23 16:39:13 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/23 21:46:15 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	raytrace(t_camera *camera, t_scene *scene)
 		{
 			ray_dir = ray(scene, x, y, camera);
 			object = scene->objs_list->content;
-			scene->color = triangle(scene, camera, ray_dir, object->triangle);
+			scene->color = square(scene, camera, ray_dir, object->square);
 			my_mlx_pixel_put(&camera->image, x, y, scene->color);
 			y++;
 		}
