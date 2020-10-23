@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 17:55:08 by hovalygtara       #+#    #+#             */
-/*   Updated: 2020/10/07 01:02:37 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/22 13:03:57 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,6 @@ void	parse_ambient(t_scene *scene)
 	scene->amb.ratio = ft_atod(scene->param[1]);
 	scene->amb.rgb = parse_rgb(scene->param[2], scene);
 	scene->amb.is_parsed = 1;
-	if (!rgb_range(scene->amb.rgb))
-		errors_handler(INVALID_AMBIENT, scene);
 	if (scene->amb.ratio < 0.0 || scene->amb.ratio > 1.0)
 		errors_handler(INVALID_AMBIENT, scene);
 }
@@ -154,8 +152,7 @@ void	parse_light(t_scene *scene)
 	light->coord = parse_xyz(scene->param[1], scene);
 	light->bright = ft_atod(scene->param[2]);
 	light->rgb = parse_rgb(scene->param[3], scene);
-	if (light->bright < 0.0 || light->bright > 1.0 ||
-	rgb_range(light->rgb) == 0)
+	if (light->bright < 0.0 || light->bright > 1.0)
 		errors_handler(INVALID_LIGHT, scene);
 	ft_lstadd_back(&(scene->light_list), ft_lstnew(light));
 }

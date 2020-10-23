@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/12 01:42:44 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/22 17:59:44 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct		s_resolution
 typedef struct		s_ambient
 {
 	double			ratio;
-	t_rgb			rgb;
+	t_rgb				rgb;
 	int				is_parsed;
 }					t_ambient;
 
@@ -128,7 +128,7 @@ typedef struct		s_scene
 	void			*win_ptr;
 	int				save;
 	char			**param;
-	int				yes;
+	int				color;
 }					t_scene;
 
 #endif

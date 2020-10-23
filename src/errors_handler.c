@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 16:44:53 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/07 16:19:31 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/22 12:54:18 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ static void		print_error2(int error_id)
 		ft_perror("Minilibx initialization fail:(");
 	else if (error_id == MLX_NEW_IMAGE_FAIL)
 		ft_perror("Mlx new image initialization fail:(");
+	else if (error_id == WRONG_PARAM)
+		ft_perror("Wrong params, please check your .rt file");
+	else if (error_id == INVALID_RGB_RANGE)
+		ft_perror("Wrong RGB");
 	else 
 		return ;
 }

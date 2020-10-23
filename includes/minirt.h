@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/12 18:27:29 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/23 17:52:11 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@
 # include "structures.h"
 # include "libft.h"
 
+int		light(t_xyz p, t_xyz n, t_scene *scene, t_rgb rgb);
 void	raytrace(t_camera *camera, t_scene *scene);
 void	start_rt(t_scene *t_scene);
-int		sphere(t_scene *scene, t_camera *camera, t_xyz ray, t_sphere *sp);
-int		plane(t_scene *scene, t_camera *camera, t_xyz ray);
-int		square(t_scene *scene, t_camera *camera, t_xyz ray);
+int		sphere(t_scene *scene, t_camera *camera, t_xyz ray, t_sphere sp);
+int		plane(t_scene *scene, t_camera *camera, t_xyz ray, t_plane plane);
+int		square(t_scene *scene, t_camera *camera, t_xyz ray, t_square sq);
+int		triangle(t_scene *scene, t_camera *cam, t_xyz ray, t_triangle tr);
 int		cylinder(t_scene *scene, t_camera *camera, t_xyz ray);
-int		triangle(t_scene *scene, t_camera *camera, t_xyz ray);
 void	parsing(char *rt_file, t_scene *scene);
 void	parse_resolution(t_scene *scene);
 void	parse_ambient(t_scene *scene);
@@ -62,6 +63,7 @@ t_xyz	vec_sub(t_xyz vec1, t_xyz vec2);
 t_xyz	vec_mpl(t_xyz vec1, double mpl);
 t_xyz	vec_div(t_xyz vec1, double div);
 t_xyz	vec_norm(t_xyz vec);
+double	vec_smt(t_xyz vec, t_xyz vec2);
 double	vec_dot(t_xyz vec1, t_xyz vec2);
 double	vec_length(t_xyz vec);
 #endif

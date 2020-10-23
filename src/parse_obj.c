@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 12:38:07 by hovalygtara       #+#    #+#             */
-/*   Updated: 2020/10/07 01:04:29 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/22 12:50:22 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	parse_sphere(t_scene *scene)
 	obj->sphere.coord = parse_xyz(scene->param[1], scene);
 	obj->sphere.diam = ft_atod(scene->param[2]);
 	obj->sphere.rgb = parse_rgb(scene->param[3], scene);
-	if (rgb_range(obj->sphere.rgb) == 0)
-		errors_handler(INVALID_SPHERE, scene);
 	ft_lstadd_back(&(scene->objs_list), ft_lstnew(obj));
 }
 
@@ -42,8 +40,6 @@ void	parse_plane(t_scene *scene)
 	obj->plane.orient = parse_xyz(scene->param[2], scene);
 	obj->plane.coord = parse_xyz(scene->param[1], scene);
 	if (orient_range(obj->plane.orient) == 0)
-		errors_handler(INVALID_PLANE, scene);
-	if (rgb_range(obj->plane.rgb) == 0)
 		errors_handler(INVALID_PLANE, scene);
 	ft_lstadd_back(&(scene->objs_list), ft_lstnew(obj));
 }
@@ -62,8 +58,6 @@ void	parse_square(t_scene *scene)
 	obj->square.size = ft_atod(scene->param[3]);
 	obj->square.rgb = parse_rgb(scene->param[4], scene);
 	if (orient_range(obj->square.orient) == 0)
-		errors_handler(INVALID_SQUARE, scene);
-	if (rgb_range(obj->square.rgb) == 0)
 		errors_handler(INVALID_SQUARE, scene);
 	ft_lstadd_back(&(scene->objs_list), ft_lstnew(obj));
 }
@@ -84,8 +78,6 @@ void	parse_cylinder(t_scene *scene)
 	obj->cylinder.rgb = parse_rgb(scene->param[5], scene);
 	if (orient_range(obj->cylinder.orient) == 0)
 		errors_handler(INVALID_CYLINDER, scene);
-	if (rgb_range(obj->cylinder.rgb) == 0)
-		errors_handler(INVALID_CYLINDER, scene);
 	ft_lstadd_back(&(scene->objs_list), ft_lstnew(obj));
 }
 
@@ -102,7 +94,5 @@ void	parse_triangle(t_scene *scene)
 	obj->triangle.coord2 = parse_xyz(scene->param[2], scene);
 	obj->triangle.coord3 = parse_xyz(scene->param[3], scene);
 	obj->triangle.rgb = parse_rgb(scene->param[4], scene);
-	if (rgb_range(obj->triangle.rgb) == 0)
-		errors_handler(INVALID_TRIANGLE, scene);
 	ft_lstadd_back(&(scene->objs_list), ft_lstnew(obj));
 }

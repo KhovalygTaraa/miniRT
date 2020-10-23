@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 19:20:38 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/07 01:01:49 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/22 18:53:37 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,23 @@ int		orient_range(t_xyz xyz)
 	return (i);
 }
 
-t_rgb	parse_rgb(char *str, t_scene *scene)
+t_rgb		parse_rgb(char *str, t_scene *scene)
 {
 	t_rgb	color;
 	char	**rgb;
+	char	*new;
+	int		i;
 
 	if (!(rgb = ft_split(str, ',')))
 		errors_handler(MALLOC_ERR, scene);
+	if((i = count_2array(rgb)) != 3)
+		errors_handler(WRONG_PARAM, scene);
 	color.r = ft_atoi(rgb[0]);
 	color.g = ft_atoi(rgb[1]);
 	color.b = ft_atoi(rgb[2]);
 	free_2array(rgb);
+	if (rgb_range(color) == 0)
+		errors_handler(INVALID_RGB_RANGE, scene);
 	return (color);
 }
 
@@ -44,9 +50,12 @@ t_xyz	parse_xyz(char *str, t_scene *scene)
 {
 	t_xyz	xyz;
 	char	**array;
+	int		i;
 
 	if (!(array = ft_split(str, ',')))
 		errors_handler(MALLOC_ERR, scene);
+	if((i = count_2array(array)) != 3)
+		errors_handler(WRONG_PARAM, scene);
 	xyz.x = ft_atod(array[0]);
 	xyz.y = ft_atod(array[1]);
 	xyz.z = ft_atod(array[2]);
