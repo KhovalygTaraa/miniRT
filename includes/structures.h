@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/22 17:59:44 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/28 02:56:02 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,20 @@
 
 typedef struct		s_rgb
 {
-	int				r;
-	int				g;
-	int				b;
+	double				r;
+	double				g;
+	double				b;
 }					t_rgb;
+
+typedef struct		s_mhave
+{
+	double			dist;
+	double			dist2;
+	int				color;
+	int				is_i;
+	t_rgb			cur;
+	t_rgb			real;	
+}					t_mhave;
 
 typedef struct		s_xyz
 {
@@ -105,6 +115,14 @@ typedef struct		s_triangle
 	t_rgb			rgb;
 }					t_triangle;
 
+typedef struct		s_circle
+{
+	t_xyz			coord;
+	t_xyz			orient;
+	double			diam;
+	t_rgb			rgb;
+}					t_circle;
+
 typedef struct		s_object
 {
 	int			id;
@@ -113,6 +131,7 @@ typedef struct		s_object
 	t_square	square;
 	t_cylinder	cylinder;
 	t_triangle	triangle;
+	t_circle	circle;
 
 }					t_object;
 
@@ -121,14 +140,15 @@ typedef struct		s_scene
 	t_list			*cam_list;
 	t_list			*light_list;
 	t_list			*objs_list;
+	t_object		obj;
 	t_resolution	res;
 	t_ambient		amb;
 	t_camera		camera;
+	t_mhave			mhave;
 	void			*mlx;
 	void			*win_ptr;
 	int				save;
 	char			**param;
-	int				color;
 }					t_scene;
 
 #endif

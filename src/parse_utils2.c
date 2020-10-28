@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 19:20:38 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/22 18:53:37 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/28 02:58:06 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ t_rgb		parse_rgb(char *str, t_scene *scene)
 		errors_handler(MALLOC_ERR, scene);
 	if((i = count_2array(rgb)) != 3)
 		errors_handler(WRONG_PARAM, scene);
-	color.r = ft_atoi(rgb[0]);
-	color.g = ft_atoi(rgb[1]);
-	color.b = ft_atoi(rgb[2]);
+	color.r = ft_atod(rgb[0]);
+	color.g = ft_atod(rgb[1]);
+	color.b = ft_atod(rgb[2]);
 	free_2array(rgb);
 	if (rgb_range(color) == 0)
 		errors_handler(INVALID_RGB_RANGE, scene);
@@ -61,4 +61,18 @@ t_xyz	parse_xyz(char *str, t_scene *scene)
 	xyz.z = ft_atod(array[2]);
 	free_2array(array);
 	return (xyz);
+}
+
+void	parse_circle(t_scene *scene, t_cylinder cy, double height)
+{
+	t_object	*obj;
+
+	if (!(obj = (t_object*)malloc(sizeof(t_object))))
+		errors_handler(MALLOC_ERR, scene);
+	obj->id = CIRCLE;
+	obj->circle.coord = vec_sum(cy.coord, vec_mpl(vec_norm(cy.orient), height));
+	obj->circle.orient = cy.orient;
+	obj->circle.diam = cy.diam;
+	obj->circle.rgb = cy.rgb;
+	ft_lstadd_back(&(scene->objs_list), ft_lstnew(obj));
 }

@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   o_plane.c                                          :+:      :+:    :+:   */
+/*   o_circle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/12 01:03:20 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/28 02:10:03 by swquinc          ###   ########.fr       */
+/*   Created: 2020/10/27 23:02:16 by swquinc           #+#    #+#             */
+/*   Updated: 2020/10/28 04:40:59 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int		plane(t_scene *scene, t_camera *cam, t_xyz ray, t_plane plane)
+int		circle(t_scene *scene, t_camera *camera, t_xyz ray, t_circle cr)
 {
-	double	a;
-	double	b;
-	double	c;
-	double	t;
-	t_xyz	vec;
+	double		a;
+	double		b;
+	double		t;
+	t_xyz		vec;
 
-	a = vec_dot(vec_sub(cam->coord, plane.coord), plane.orient);
-	b = vec_dot(ray, plane.orient);
+	a = vec_dot(vec_sub(camera->coord, cr.coord), cr.orient);
+	b = vec_dot(ray, cr.orient);
 	if (b == 0 || (a < 0 && b < 0) || (a > 0 && b > 0))
 		return (0);
 	t = -a / b;
 	if (t < 0)
 		return (0);
-	scene->mhave.dist2 = t;
-	scene->mhave.cur = plane.rgb;
-	return (1);
+	vec = vec_sub(vec_sum(camera->coord, vec_mpl(ray, t)), cr.coord);	
+	a = sqrt(vec_dot(vec, vec));
+	if (a <= cr.diam / 2)
+	{
+		scene->mhave.dist2 = t;
+		scene->mhave.cur = cr.rgb;
+		return (1);
+	}
+	return (0);
+	// if (a > (cr.diam / 2))
+	// 	return (0);
+	// scene->mhave.dist2 = t;
+	// scene->mhave.cur = cr.rgb;
+	// return (1);
 }
