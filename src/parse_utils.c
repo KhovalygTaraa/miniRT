@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 11:22:18 by hovalygtara       #+#    #+#             */
-/*   Updated: 2020/10/06 22:30:08 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/28 17:48:08 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@ int		rgb_range(t_rgb rgb)
 	int		i;
 
 	i = 1;
-	if (rgb.r < 0 || rgb.r > 255)
+	if (rgb.r < 0 || rgb.r > 1)
 		i = 0;
-	if (rgb.g < 0 || rgb.g > 255)
+	if (rgb.g < 0 || rgb.g > 1)
 		i = 0;
-	if (rgb.b < 0 || rgb.b > 255)
+	if (rgb.b < 0 || rgb.b > 1)
 		i = 0;
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 19:20:38 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/28 02:58:06 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/28 17:48:55 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ t_rgb		parse_rgb(char *str, t_scene *scene)
 		errors_handler(MALLOC_ERR, scene);
 	if((i = count_2array(rgb)) != 3)
 		errors_handler(WRONG_PARAM, scene);
-	color.r = ft_atod(rgb[0]);
-	color.g = ft_atod(rgb[1]);
-	color.b = ft_atod(rgb[2]);
+	color.r = ft_atod(rgb[0]) / 255;
+	color.g = ft_atod(rgb[1]) / 255;
+	color.b = ft_atod(rgb[2]) / 255;
 	free_2array(rgb);
 	if (rgb_range(color) == 0)
 		errors_handler(INVALID_RGB_RANGE, scene);

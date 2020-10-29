@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 01:49:24 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/28 04:48:27 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/28 20:43:16 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static t_xyz	ray(t_scene *scene, int x, int y, t_camera *camera)
 	return (dir);
 }
 
-static int		selector(t_scene *s, t_camera *cam, t_xyz ray, t_object *object)
+int		selector(t_scene *s, t_camera *cam, t_xyz ray, t_object *object)
 {
 	int		t;
 
@@ -98,7 +98,7 @@ static void		render_color(t_camera *cam, t_scene *s, t_xyz ray)
 	}
 	if (s->mhave.dist == __INT_MAX__)
 		return ;
-	light_color_shadow(s, cam, ray);
+	s->mhave.color = light_color_shadow(s, cam, ray);
 }
 
 void	raytrace(t_camera *camera, t_scene *scene)

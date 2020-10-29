@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 16:15:19 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/12 15:39:29 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/28 21:49:57 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,6 @@ void	start_rt(t_scene *scene)
 	scene->win_ptr = mlx_new_window(scene->mlx, scene->res.x, scene->res.y, "miniRT");
 	create_camera(scene);
 
-	x = scene->res.x;
-	y = scene->res.y;
-	while (x != 0)
-	{
-		x--;
-	}
 	mlx_put_image_to_window(scene->mlx, scene->win_ptr, scene->camera.image.img, 0, 0);
 	mlx_hook(scene->win_ptr, 17, 0, kill, scene);
 	mlx_loop(scene->mlx);

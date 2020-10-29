@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 18:16:45 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/28 02:55:22 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/28 17:49:52 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,15 @@ t_rgb	new_color(t_rgb color1, t_rgb color2)
 t_rgb	final_color(t_rgb color1, t_rgb color2)
 {
 	t_rgb	color;
+	int		a;
 
-	if((color.r = color1.r + color2.r) > 255)
-		color.r = 255;
-	if((color.g = color1.g + color2.g) > 255)
-		color.g = 255;
-	if((color.b = color1.b + color2.b) > 255)
-		color.b = 255;
+	a = 1;
+	if((color.r = color1.r + color2.r) > a)
+		color.r = a;
+	if((color.g = color1.g + color2.g) > a)
+		color.g = a;
+	if((color.b = color1.b + color2.b) > a)
+		color.b = a;
 	return (color);
 }
 

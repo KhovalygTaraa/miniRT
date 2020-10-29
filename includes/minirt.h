@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/28 03:33:47 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/28 20:43:35 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@
 # include "libft.h"
 
 int			light(t_xyz p, t_xyz n, t_scene *scene, t_rgb rgb);
-void		light_color_shadow(t_scene *scene, t_camera *cam, t_xyz ray);
+int			light_color_shadow(t_scene *scene, t_camera *cam, t_xyz ray);
 t_rgb		color_bright(t_rgb color, double ratio);
 t_rgb		new_color(t_rgb color1, t_rgb color2);
 t_rgb		final_color(t_rgb color1, t_rgb color2);
 t_object	cpy_obj(t_object *obj);
+double		cap(t_plane plane, t_xyz origin, t_xyz ray);
 void		raytrace(t_camera *camera, t_scene *scene);
 void		start_rt(t_scene *t_scene);
 int			sphere(t_scene *scene, t_camera *camera, t_xyz ray, t_sphere sp);
@@ -43,6 +44,7 @@ int			square(t_scene *scene, t_camera *camera, t_xyz ray, t_square sq);
 int			triangle(t_scene *scene, t_camera *cam, t_xyz ray, t_triangle tr);
 int			cylinder(t_scene *scene, t_camera *camera, t_xyz ray, t_cylinder cy);
 int			circle(t_scene *scene, t_camera *camera, t_xyz ray, t_circle cr);
+int			selector(t_scene *s, t_camera *cam, t_xyz ray, t_object *object);
 void		parsing(char *rt_file, t_scene *scene);
 void		parse_resolution(t_scene *scene);
 void		parse_ambient(t_scene *scene);

@@ -6,18 +6,13 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 01:03:48 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/28 02:10:33 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/29 05:41:39 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void		create_caps(t_scene *scene, t_cylinder cy, double t)
-{
-
-}
-
-static double	cap(t_plane plane, t_xyz origin, t_xyz ray)
+double	cap(t_plane plane, t_xyz origin, t_xyz ray)
 {
 	double	a;
 	double	b;
@@ -34,28 +29,29 @@ static double	cap(t_plane plane, t_xyz origin, t_xyz ray)
 		return (__INT_MAX__);
 	return (t);
 }
+
 static int	cylinder1(t_xyz ray, double t1, double t2, t_cylinder cy, t_camera *cam)
 {
 	double	t;
 	double	check;
+	double	check2;
 	t_xyz	origin;
 	t_plane	cy_plane;
+	static double	l;
 
 	cy_plane.orient = cy.orient;
 	cy_plane.coord = cy.coord;
 	t = -1;
-	if (t1 >= 0)
+	if (t1 < t2)
 		t = t1;
-	if (t2 >= 0 && t2 < t1)
+	else if (t2 < t1)
 		t = t2;
 	if (t < 0)
 		return (-1);
 	origin = vec_sum(cam->coord, vec_mpl(ray, t));
 	check = cap(cy_plane, origin, cy.orient);
-	if (check <= (cy.height / 2))
-		return (t);
-	check = cap(cy_plane, origin, vec_mpl(cy.orient, -1));
-	if (check <= (cy.height / 2))
+	check2 = cap(cy_plane, origin, vec_mpl(cy.orient, -1));
+	if (check <= cy.height / 2 || check2 <= cy.height / 2)
 		return (t);
 	return (-1);
 }
@@ -67,8 +63,7 @@ int		cylinder(t_scene *scene, t_camera *cam, t_xyz ray, t_cylinder cy)
 	t_xyz	vec2;
 	t_xyz	eq;
 
-	create_caps(scene, cy, cy.height / 2 - 0.1);
-	vec = vec_cross(ray, cy.orient);
+	vec = vec_norm(vec_cross(ray, cy.orient));
 	vec2 = vec_sub(cam->coord, cy.coord);
 	vec2 = vec_cross(vec2, cy.orient);
 	eq.x = vec_dot(vec, vec);
@@ -83,7 +78,6 @@ int		cylinder(t_scene *scene, t_camera *cam, t_xyz ray, t_cylinder cy)
 	if ((t = cylinder1(ray, t, eq.z, cy, cam)) < 0)
 		return (0);
 	scene->mhave.dist2 = t;
-	vec = vec_sum(cam->coord, vec_mpl(vec_sub(ray, cam->coord), t));
 	scene->mhave.cur = cy.rgb;
 	return (1);
 }
