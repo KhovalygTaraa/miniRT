@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 11:22:18 by hovalygtara       #+#    #+#             */
-/*   Updated: 2020/10/28 17:48:08 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/31 02:46:59 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char	**free_2array(char **array)
 {
 	int		i;
 
-	if (!array)
-		return (NULL);
 	i = 0;
 	while (array[i] != NULL)
 	{

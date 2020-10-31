@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/28 20:43:35 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/31 01:05:56 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ t_rgb		new_color(t_rgb color1, t_rgb color2);
 t_rgb		final_color(t_rgb color1, t_rgb color2);
 t_object	cpy_obj(t_object *obj);
 double		cap(t_plane plane, t_xyz origin, t_xyz ray);
+void		create_bmp(t_scene *scene);
+void		free_all(t_scene *scene);
 void		raytrace(t_camera *camera, t_scene *scene);
 void		start_rt(t_scene *t_scene);
 int			sphere(t_scene *scene, t_camera *camera, t_xyz ray, t_sphere sp);
@@ -58,6 +60,7 @@ void		parse_triangle(t_scene *scene);
 void		parse_circle(t_scene *scene, t_cylinder cy, double height);
 t_rgb		parse_rgb(char *str, t_scene *scene);
 t_xyz		parse_xyz(char *str, t_scene *scene);
+void		free_all(t_scene *scene);
 char		**free_2array(char **array);
 int			count_2array(char **array);
 int			is_correct(t_scene *scene);
@@ -66,6 +69,8 @@ int			rgb_range(t_rgb rgb);
 int			orient_range(t_xyz xyz);
 void		create_camera(t_scene *scene);
 void		switch_camera(t_scene *scene);
+void		next_camera(t_scene *scene);
+void		prev_camera(t_scene *scene);
 void		show_scene(t_scene *scene);
 void		my_mlx_pixel_put(t_image *data, int x, int y, int color);
 t_xyz		vec_sum(t_xyz vec1, t_xyz vec2);

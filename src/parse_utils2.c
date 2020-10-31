@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 19:20:38 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/28 17:48:55 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/31 02:50:17 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_rgb		parse_rgb(char *str, t_scene *scene)
 {
 	t_rgb	color;
 	char	**rgb;
-	char	*new;
 	int		i;
 
 	if (!(rgb = ft_split(str, ',')))

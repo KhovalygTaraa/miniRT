@@ -31,7 +31,6 @@ int		square(t_scene *scene, t_camera *cam, t_xyz ray, t_square square)
 	c = (square.size / 2);
 	if (fabs(vec.x) > c || fabs(vec.y) > c || fabs(vec.z) > c)
 		return (0);
-	vec = vec_sum(cam->coord, vec_mpl(vec_sub(ray, cam->coord), t));
 	if (t < 0)
 		return (0);
 	scene->mhave.dist2 = t;

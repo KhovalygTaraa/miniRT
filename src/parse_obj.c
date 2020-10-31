@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 12:38:07 by hovalygtara       #+#    #+#             */
-/*   Updated: 2020/10/29 05:40:08 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/30 20:11:04 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void	parse_cylinder(t_scene *scene)
 	if (orient_range(obj->cylinder.orient) == 0)
 		errors_handler(INVALID_CYLINDER, scene);
 	ft_lstadd_back(&(scene->objs_list), ft_lstnew(obj));
-	parse_circle(scene, obj->cylinder, (obj->cylinder.height / -2) + 0.1);
-	parse_circle(scene, obj->cylinder, (obj->cylinder.height / 2) - 0.5);
+	parse_circle(scene, obj->cylinder, (obj->cylinder.height / -2));
+	parse_circle(scene, obj->cylinder, (obj->cylinder.height / 2));
 }
 
 void	parse_triangle(t_scene *scene)

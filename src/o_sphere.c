@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 00:54:00 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/29 03:39:01 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/30 03:14:54 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,14 @@ int		sphere(t_scene *scene, t_camera *cam, t_xyz ray, t_sphere sp)
 		return (0);
 	t1 = (-k.y + sqrt(t2)) / (2 * k.x);
 	t2 = (-k.y - sqrt(t2)) / (2 * k.x);
-	if (t1 <= t2 && t1 >= 0)
-		scene->mhave.dist2 = t1;
-	else if (t2 <= t1 && t2 >= 0)
+	if (t1 < 0 && t2 >= 0)
 		scene->mhave.dist2 = t2;
+	else if (t2 < 0 && t1 >= 0)
+		scene->mhave.dist2 = t1;
+	else if (t1 >= 0 && t2 >= 0)
+		scene->mhave.dist2 = fmin(t1, t2);
+	else if (t1 < 0 && t2 < 0)
+		return (-1);
 	scene->mhave.cur = sp.rgb;
 	return (1);
 }

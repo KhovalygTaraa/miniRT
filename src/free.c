@@ -1,31 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   o_plane.c                                          :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/12 01:03:20 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/31 05:45:57 by swquinc          ###   ########.fr       */
+/*   Created: 2020/10/29 15:24:51 by swquinc           #+#    #+#             */
+/*   Updated: 2020/10/31 02:38:43 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int		plane(t_scene *scene, t_camera *cam, t_xyz ray, t_plane plane)
+static void		free_list(t_list *list)
 {
-	double	a;
-	double	b;
-	double	t;
+	t_list	*tmp;
 
-	a = vec_dot(vec_sub(cam->coord, plane.coord), plane.orient);
-	b = vec_dot(ray, plane.orient);
-	if (b == 0 || (a < 0 && b < 0) || (a > 0 && b > 0))
-		return (0);
-	t = -a / b;
-	if (t < 0)
-		return (0);
-	scene->mhave.dist2 = t;
-	scene->mhave.cur = plane.rgb;
-	return (1);
+	while(list)
+	{
+		free(list->content);
+		tmp = list;
+		list = list->next;
+		free(tmp);
+	}
+}
+
+static void		free_bilist(t_bilist *list)
+{
+	t_bilist	*tmp;
+
+	while(list)
+	{
+		free(list->content);
+		tmp = list;
+		list = list->next;
+		free(tmp);
+	}
+}
+
+void	free_all(t_scene *scene)
+{
+	free_list(scene->objs_list);
+	free_bilist(scene->cam_list);
+	free_list(scene->light_list);
 }

@@ -6,7 +6,7 @@
 #    By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 19:48:56 by hovalygta         #+#    #+#              #
-#    Updated: 2020/10/28 03:31:35 by swquinc          ###   ########.fr        #
+#    Updated: 2020/10/31 05:45:22 by swquinc          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRC_NAME		=	main.c \
 					raytrace.c \
 					light.c \
 					utils.c \
-
+					bmp.c \
+					free.c \
 
 SRC_DIR			=	src
 OBJ_DIR			=	obj
@@ -41,7 +42,7 @@ LIBFT_A			=	$(LIBFT_DIR)/libft.a
 LIBMLX_A		=	$(LIBMLX_DIR)/libmlx.a
 
 CC				=	gcc
-# FLAGS			=	-Wall -Wextra -Werror
+FLAGS			=	-Wall -Wextra -Werror
 # FLAGS			+=	-g3
 OPENGL			=	-framework OpenGL -framework AppKit
 INCLUDES		= 	-I includes -I $(LIBFT_DIR) -I $(LIBMLX_DIR)

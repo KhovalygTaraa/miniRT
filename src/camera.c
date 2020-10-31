@@ -6,27 +6,16 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 22:31:10 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/12 19:19:57 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/29 09:34:39 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void		res(t_scene *scene, t_camera *camera, int a, int b)
-{
-
-}
-
-static void		draw(t_camera *camera, t_scene *scene)
-{
-
-	
-}
-
 void	create_camera(t_scene *scene)
 {
 	t_camera	*camera;
-	t_list		*tmp;
+	t_bilist	*tmp;
 
 	tmp = scene->cam_list;
 	while (tmp)
@@ -39,8 +28,30 @@ void	create_camera(t_scene *scene)
 		raytrace(camera, scene);
 		if (!scene->camera.image.img)
 			scene->camera = *camera;
-	//	prepare();
-	//	raytracing();
+		if (scene->save)
+			return ;
 		tmp = tmp->next;
 	}
+}
+
+void	next_camera(t_scene *scene)
+{
+	t_camera	*cam;
+
+	if (!scene->cam_list->next)
+		return ;
+	cam = scene->cam_list->next->content;
+	scene->camera = *cam;
+	scene->cam_list = scene->cam_list->next;
+}
+
+void	prev_camera(t_scene *scene)
+{
+	t_camera	*cam;
+
+	if (!scene->cam_list->prev)
+		return ;
+	cam = scene->cam_list->prev->content;
+	scene->camera = *cam;
+	scene->cam_list = scene->cam_list->prev;
 }

@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 01:51:05 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/29 05:08:01 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/31 05:48:41 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ static t_xyz	get_normal(t_scene *scene, t_xyz p)
 	t_xyz		vec;
 	t_xyz		vec2;
 
+	n = (t_xyz){0,0,0};
 	obj = scene->obj;
 	if (obj.id == PLANE)
 		n = vec_norm(obj.plane.orient);
@@ -115,9 +116,8 @@ static t_xyz	get_normal(t_scene *scene, t_xyz p)
 		n = vec_norm(obj.square.orient);
 	else if (obj.id == SPHERE)
 		n = vec_norm(vec_sub(p, obj.sphere.coord));
-	else if (obj.id == CYLINDER)
+	else
 		n = cylinder_normal(obj.cylinder, p);
-		// n = vec_norm(vec_sub(p, obj.cylinder.coord));
 	return (n);
 }
 
@@ -131,11 +131,9 @@ int		light_color_shadow(t_scene *scene, t_camera *cam, t_xyz ray)
 	color = new_color(color, color_bright(scene->amb.rgb, scene->amb.ratio));
 	p = vec_sum(cam->coord, vec_mpl(ray, scene->mhave.dist));
 	n = get_normal(scene, p);
-	// n = vec_div(n, vec_length(n));
 	color = get_color(scene, p, n, color);
 	color.r = color.r * 255;
 	color.g = color.g * 255;
 	color.b = color.b * 255;
 	return (0 << 24 | (int)color.r << 16 | (int)color.g << 8 | (int)color.b);
-	// scene->mhave.color = light(p, n, scene, scene->mhave.real);
 }

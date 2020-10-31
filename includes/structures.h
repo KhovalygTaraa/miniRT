@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/28 02:56:02 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/30 16:57:22 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ typedef struct		s_rgb
 	double				b;
 }					t_rgb;
 
+typedef struct		s_xyz
+{
+	double			x;
+	double			y;
+	double			z;
+}					t_xyz;
+
 typedef struct		s_mhave
 {
 	double			dist;
@@ -30,13 +37,6 @@ typedef struct		s_mhave
 	t_rgb			cur;
 	t_rgb			real;	
 }					t_mhave;
-
-typedef struct		s_xyz
-{
-	double			x;
-	double			y;
-	double			z;
-}					t_xyz;
 
 typedef struct		s_image
 {
@@ -137,7 +137,7 @@ typedef struct		s_object
 
 typedef struct		s_scene
 {
-	t_list			*cam_list;
+	t_bilist		*cam_list;
 	t_list			*light_list;
 	t_list			*objs_list;
 	t_object		obj;

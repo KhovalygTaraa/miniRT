@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 16:44:53 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/22 12:54:18 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/31 02:28:06 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ static void		print_error(int error_id)
 void		errors_handler(int error_id, t_scene *scene)
 {
 	print_error(error_id);
-	//structFree(scene);
+	free_all(scene);
 	exit(EXIT_FAILURE);
 }

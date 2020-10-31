@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 01:49:24 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/28 20:43:16 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/31 05:47:11 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,6 @@ void	raytrace(t_camera *camera, t_scene *scene)
 	int		x;
 	int		y;
 	t_xyz	ray_dir;
-	int		i;
-	t_object *a;
 
 	x = 0;
 	while (x < scene->res.x)
