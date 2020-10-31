@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 16:44:53 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/11/01 00:37:47 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 01:11:05 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ static void		print_error2(int error_id)
 	else if (error_id == INVALID_TRIANGLE)
 		ft_perror("Invalid triangle, please check parameters!");
 	else if (error_id == NO_RESOLUTION)
-		ft_perror("Resolution does not exist, you should add!");
+		ft_perror("Resolution does not declared, you should do this!");
+	else if (error_id == NO_AMBIENT)
+		ft_perror("Ambient does not declared, you should do this");
+	else if (error_id == NO_CAMERA)
+		ft_perror("Camera does not declared, you should do this");
 	else if (error_id == MINILIBX_FAIL)
 		ft_perror("Minilibx initialization fail:(");
 	else if (error_id == MLX_NEW_IMAGE_FAIL)

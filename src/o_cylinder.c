@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 01:03:48 by swquinc           #+#    #+#             */
-/*   Updated: 2020/11/01 00:32:17 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 00:50:54 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ double			cap(t_plane plane, t_xyz origin, t_xyz ray)
 
 static double	cylinder1(t_xyz ray, double t, t_cylinder cy, t_camera *cam)
 {
-	double		t;
 	double		check;
 	double		check2;
 	t_xyz		origin;

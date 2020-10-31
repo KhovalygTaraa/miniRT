@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 17:55:08 by hovalygtara       #+#    #+#             */
-/*   Updated: 2020/10/31 13:44:43 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 01:09:48 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ void	parsing(char *rt_file, t_scene *scene)
 	close(fd);
 	if (scene->res.is_parsed == 0)
 		errors_handler(NO_RESOLUTION, scene);
+	if (scene->amb.is_parsed == 0)
+		errors_handler(NO_AMBIENT, scene);
+	if (scene->cam_list == NULL)
+		errors_handler(NO_CAMERA, scene);
 }
 
 void	parse_resolution(t_scene *scene)

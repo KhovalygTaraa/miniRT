@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 17:20:58 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/22 12:53:17 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 01:10:27 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define MLX_NEW_IMAGE_FAIL 16
 # define WRONG_PARAM 17
 # define INVALID_RGB_RANGE 18
+# define NO_AMBIENT 19
+# define NO_CAMERA 20
 # include "structures.h"
 
 void	errors_handler(int error_id, t_scene *scene);
