@@ -1,4 +1,4 @@
-# **************************************************************************** #
+#**************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,7 +6,7 @@
 #    By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 19:48:56 by hovalygta         #+#    #+#              #
-#    Updated: 2020/10/31 05:45:22 by swquinc          ###   ########.fr        #
+#    Updated: 2020/10/31 20:15:53 by hovalygta        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,10 @@ INCLUDES		= 	-I includes -I $(LIBFT_DIR) -I $(LIBMLX_DIR)
 
 OBJ 			= 	$(addprefix $(OBJ_DIR)/, $(SRC_NAME:.c=.o))
 
-all: $(NAME)
+all: $(OBJ_DIR) $(NAME)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c ./includes/minirt.h
 		$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
@@ -61,6 +64,7 @@ $(NAME): $(OBJ)
 
 clean:
 	/bin/rm -f $(OBJ_DIR)/*
+	/bin/rm -rf $(OBJ_DIR)
 	make clean -C $(LIBFT_DIR)
 	make clean -C $(LIBMLX_DIR)
 
