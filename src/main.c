@@ -6,21 +6,20 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 16:15:19 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/31 18:41:39 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 00:38:21 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-
-static int	kill(t_scene *scene)
+static int		kill(t_scene *scene)
 {
 	mlx_destroy_window(scene->mlx, scene->win_ptr);
 	free_all(scene);
 	exit(EXIT_SUCCESS);
 }
 
-static int	cam_switch(int key, t_scene *scene)
+static int		cam_switch(int key, t_scene *scene)
 {
 	if (key == 53)
 		kill(scene);
@@ -28,36 +27,38 @@ static int	cam_switch(int key, t_scene *scene)
 		next_camera(scene);
 	else if (key == 123)
 		prev_camera(scene);
-	mlx_put_image_to_window(scene->mlx, scene->win_ptr, scene->camera.image.img, 0, 0);
+	mlx_put_image_to_window(scene->mlx, scene->win_ptr,
+	scene->camera.image.img, 0, 0);
 	return (0);
 }
 
-void	my_mlx_pixel_put(t_image *data, int x, int y, int color)
+void			my_mlx_pixel_put(t_image *data, int x, int y, int color)
 {
-	char	*dst;
+	char		*dst;
 
 	dst = data->addr + (y * data->line_lenght + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
-void	start_rt(t_scene *scene)
+
+void			start_rt(t_scene *s)
 {
-	if(!(scene->mlx = mlx_init()))
-		errors_handler(MINILIBX_FAIL, scene);
-	scene->win_ptr = mlx_new_window(scene->mlx, scene->res.x, scene->res.y, "miniRT");
-	create_camera(scene);
-	if (scene->save)
+	if (!(s->mlx = mlx_init()))
+		errors_handler(MINILIBX_FAIL, s);
+	s->win_ptr = mlx_new_window(s->mlx, s->res.x, s->res.y, "miniRT");
+	create_camera(s);
+	if (s->save)
 	{
-		create_bmp(scene);
-		free_all(scene);
+		create_bmp(s);
+		free_all(s);
 		exit(EXIT_SUCCESS);
 	}
-	mlx_hook(scene->win_ptr, 17, 0, kill, scene);
-	mlx_key_hook(scene->win_ptr, cam_switch, scene);
-	mlx_put_image_to_window(scene->mlx, scene->win_ptr, scene->camera.image.img, 0, 0);
-	mlx_loop(scene->mlx);
+	mlx_hook(s->win_ptr, 17, 0, kill, s);
+	mlx_key_hook(s->win_ptr, cam_switch, s);
+	mlx_put_image_to_window(s->mlx, s->win_ptr, s->camera.image.img, 0, 0);
+	mlx_loop(s->mlx);
 }
 
-int		main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	t_scene		scene;
 	char		*rt;

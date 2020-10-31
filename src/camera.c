@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 22:31:10 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/29 09:34:39 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 00:44:09 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 
 void	create_camera(t_scene *scene)
 {
-	t_camera	*camera;
+	t_camera	*c;
 	t_bilist	*tmp;
 
 	tmp = scene->cam_list;
 	while (tmp)
 	{
-		camera = tmp->content;
-		if (!(camera->image.img = mlx_new_image(scene->mlx, scene->res.x, scene->res.y)))
+		c = tmp->content;
+		if (!(c->image.img =
+		mlx_new_image(scene->mlx, scene->res.x, scene->res.y)))
 			errors_handler(MLX_NEW_IMAGE_FAIL, scene);
-		camera->image.addr = mlx_get_data_addr(camera->image.img,
-		&camera->image.bits_per_pixel, &camera->image.line_lenght, &camera->image.endian);
-		raytrace(camera, scene);
+		c->image.addr = mlx_get_data_addr(c->image.img,
+		&c->image.bits_per_pixel, &c->image.line_lenght, &c->image.endian);
+		raytrace(c, scene);
 		if (!scene->camera.image.img)
-			scene->camera = *camera;
+			scene->camera = *c;
 		if (scene->save)
 			return ;
 		tmp = tmp->next;

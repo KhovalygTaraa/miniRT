@@ -6,20 +6,21 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 13:32:08 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/31 18:40:26 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 00:21:27 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void		bitmap_file_data(t_scene *scene, int size, int fd)
+static void			bitmap_file_data(t_scene *scene, int size, int fd)
 {
 	unsigned char	*data;
 	int				file_size;
 
 	if (!(data = ft_calloc(14, sizeof(unsigned char))))
 		errors_handler(MALLOC_ERR, scene);
-	file_size = 54 + (scene->camera.image.bits_per_pixel / 8 * scene->res.x + size) * scene->res.y;
+	file_size = 54 + (scene->camera.image.bits_per_pixel /
+	8 * scene->res.x + size) * scene->res.y;
 	data[0] = (unsigned char)('B');
 	data[1] = (unsigned char)('M');
 	data[2] = (unsigned char)(file_size);
@@ -32,7 +33,7 @@ static void		bitmap_file_data(t_scene *scene, int size, int fd)
 	data = NULL;
 }
 
-static void		bitmap_image_data(t_scene *scene, int fd)
+static void			bitmap_image_data(t_scene *scene, int fd)
 {
 	unsigned char	*data;
 
@@ -54,11 +55,11 @@ static void		bitmap_image_data(t_scene *scene, int fd)
 	data = NULL;
 }
 
-void	create_bmp(t_scene *scene)
+void				create_bmp(t_scene *scene)
 {
-	int		fd;
-	int		size;
-	int		i;
+	int				fd;
+	int				size;
+	int				i;
 	unsigned char	*data;
 
 	if (!(data = ft_calloc(4, sizeof(unsigned char))))
@@ -66,7 +67,8 @@ void	create_bmp(t_scene *scene)
 	i = scene->res.y;
 	if (!(fd = open("save.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0666)))
 		errors_handler(CANNOT_OPEN_FILE, scene);
-	size = (4 - (scene->res.x * scene->camera.image.bits_per_pixel / 8) % 4) % 4;
+	size = (4 - (scene->res.x *
+	scene->camera.image.bits_per_pixel / 8) % 4) % 4;
 	bitmap_file_data(scene, size, fd);
 	bitmap_image_data(scene, fd);
 	while (i >= 0)

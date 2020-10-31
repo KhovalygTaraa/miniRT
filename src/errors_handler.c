@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 16:44:53 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/31 02:28:06 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 00:37:47 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void		print_error2(int error_id)
 		ft_perror("Wrong params, please check your .rt file");
 	else if (error_id == INVALID_RGB_RANGE)
 		ft_perror("Wrong RGB");
-	else 
+	else
 		return ;
 }
 
@@ -68,7 +68,7 @@ static void		print_error(int error_id)
 		print_error2(error_id);
 }
 
-void		errors_handler(int error_id, t_scene *scene)
+void			errors_handler(int error_id, t_scene *scene)
 {
 	print_error(error_id);
 	free_all(scene);

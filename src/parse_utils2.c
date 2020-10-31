@@ -6,15 +6,15 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 19:20:38 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/31 23:35:07 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 00:20:12 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int		orient_range(t_xyz xyz)
+int				orient_range(t_xyz xyz)
 {
-	int		i;
+	int			i;
 
 	i = 1;
 	if (xyz.x < -1.0 || xyz.x > 1.0)
@@ -26,15 +26,15 @@ int		orient_range(t_xyz xyz)
 	return (i);
 }
 
-t_rgb		parse_rgb(char *str, t_scene *scene)
+t_rgb			parse_rgb(char *str, t_scene *scene)
 {
-	t_rgb	color;
-	char	**rgb;
-	int		i;
+	t_rgb		color;
+	char		**rgb;
+	int			i;
 
 	if (!(rgb = ft_split(str, ',')))
 		errors_handler(MALLOC_ERR, scene);
-	if((i = count_2array(rgb)) != 3)
+	if ((i = count_2array(rgb)) != 3)
 		errors_handler(WRONG_PARAM, scene);
 	color.r = ft_atod(rgb[0]) / 255;
 	color.g = ft_atod(rgb[1]) / 255;
@@ -45,15 +45,15 @@ t_rgb		parse_rgb(char *str, t_scene *scene)
 	return (color);
 }
 
-t_xyz	parse_xyz(char *str, t_scene *scene)
+t_xyz			parse_xyz(char *str, t_scene *scene)
 {
-	t_xyz	xyz;
-	char	**array;
-	int		i;
+	t_xyz		xyz;
+	char		**array;
+	int			i;
 
 	if (!(array = ft_split(str, ',')))
 		errors_handler(MALLOC_ERR, scene);
-	if((i = count_2array(array)) != 3)
+	if ((i = count_2array(array)) != 3)
 		errors_handler(WRONG_PARAM, scene);
 	xyz.x = ft_atod(array[0]);
 	xyz.y = ft_atod(array[1]);
@@ -62,7 +62,7 @@ t_xyz	parse_xyz(char *str, t_scene *scene)
 	return (xyz);
 }
 
-void	parse_circle(t_scene *scene, t_cylinder cy, double height)
+void			parse_circle(t_scene *scene, t_cylinder cy, double height)
 {
 	t_object	*obj;
 

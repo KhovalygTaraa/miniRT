@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 01:51:05 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/31 23:31:41 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 00:18:07 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@ static int		is_shadow(t_scene *s, t_xyz p, t_xyz l, t_light *light)
 	t_object	*obj;
 	t_plane		plane;
 	t_camera	cam;
-	t_xyz		a;
 
 	cam.coord = p;
 	plane.coord = light->coord;
 	plane.orient = l;
-	a.x = __INT_MAX__;
-	a.x = cap(plane, p, l);
-	a.y = a.x - 0.1;
+	p.x = cap(plane, p, l) - 0.1;
 	list = s->objs_list;
 	while (list)
 	{
@@ -37,7 +34,7 @@ static int		is_shadow(t_scene *s, t_xyz p, t_xyz l, t_light *light)
 			list = list->next;
 			continue ;
 		}
-		if ((a.x = selector(s, &cam, l, obj)) == 1 && s->mhave.dist2 <= a.y)
+		if ((selector(s, &cam, l, obj)) == 1 && s->mhave.dist2 <= p.x)
 			return (1);
 		list = list->next;
 	}
@@ -46,9 +43,9 @@ static int		is_shadow(t_scene *s, t_xyz p, t_xyz l, t_light *light)
 
 static t_xyz	cylinder_normal(t_cylinder cy, t_xyz p)
 {
-	t_plane	cy_plane;
-	t_xyz	vec;
-	double	t;
+	t_plane		cy_plane;
+	t_xyz		vec;
+	double		t;
 
 	cy_plane.coord = cy.coord;
 	cy_plane.orient = cy.orient;
@@ -67,11 +64,11 @@ static t_xyz	cylinder_normal(t_cylinder cy, t_xyz p)
 
 static t_rgb	get_color(t_scene *scene, t_xyz p, t_xyz n, t_rgb color)
 {
-	t_list	*list;
-	t_light	*light;
-	t_xyz	l;
-	t_rgb	color1;
-	double	dot;
+	t_list		*list;
+	t_light		*light;
+	t_xyz		l;
+	t_rgb		color1;
+	double		dot;
 
 	list = scene->light_list;
 	while (list)
@@ -100,7 +97,7 @@ static t_xyz	get_normal(t_scene *scene, t_xyz p)
 	t_xyz		vec;
 	t_xyz		vec2;
 
-	n = (t_xyz){0,0,0};
+	n = (t_xyz){0, 0, 0};
 	obj = scene->obj;
 	if (obj.id == PLANE)
 		n = vec_norm(obj.plane.orient);
@@ -121,11 +118,11 @@ static t_xyz	get_normal(t_scene *scene, t_xyz p)
 	return (n);
 }
 
-int		light_color_shadow(t_scene *scene, t_camera *cam, t_xyz ray)
+int				light_color_shadow(t_scene *scene, t_camera *cam, t_xyz ray)
 {
-	t_xyz	p;
-	t_xyz	n;
-	t_rgb	color;
+	t_xyz		p;
+	t_xyz		n;
+	t_rgb		color;
 
 	color = scene->mhave.real;
 	color = new_color(color, color_bright(scene->amb.rgb, scene->amb.ratio));

@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/30 16:57:22 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/31 23:48:33 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct		s_mhave
 	int				color;
 	int				is_i;
 	t_rgb			cur;
-	t_rgb			real;	
+	t_rgb			real;
 }					t_mhave;
 
 typedef struct		s_image
@@ -57,7 +57,7 @@ typedef struct		s_resolution
 typedef struct		s_ambient
 {
 	double			ratio;
-	t_rgb				rgb;
+	t_rgb			rgb;
 	int				is_parsed;
 }					t_ambient;
 

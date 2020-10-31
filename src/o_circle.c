@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 23:02:16 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/31 21:38:37 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 00:44:41 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		circle(t_scene *scene, t_camera *camera, t_xyz ray, t_circle cr)
 	t = -a / b;
 	if (t < 0)
 		return (0);
-	vec = vec_sub(vec_sum(camera->coord, vec_mpl(ray, t)), cr.coord);	
+	vec = vec_sub(vec_sum(camera->coord, vec_mpl(ray, t)), cr.coord);
 	a = sqrt(vec_dot(vec, vec));
 	if (a <= cr.diam / 2)
 	{

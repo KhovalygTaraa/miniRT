@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 01:49:24 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/31 05:47:11 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 00:05:01 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static t_xyz	to_world(t_xyz pixel, t_camera *cam)
 {
-	double	coff;
-	t_xyz	a;
-	t_xyz	b;
-	t_xyz	c;
-	t_xyz	res;
+	double		coff;
+	t_xyz		a;
+	t_xyz		b;
+	t_xyz		c;
+	t_xyz		res;
 
 	coff = sqrt(pow(cam->orient.x, 2) + pow(cam->orient.z, 2));
 	a.x = pixel.x * (cam->orient.z / coff);
@@ -38,26 +38,25 @@ static t_xyz	to_world(t_xyz pixel, t_camera *cam)
 
 static t_xyz	ray(t_scene *scene, int x, int y, t_camera *camera)
 {
-	t_xyz	dir;
-	double	aspect;
-	double	fov;
+	t_xyz		dir;
+	double		aspect;
+	double		fov;
 
 	fov = tan(camera->fov / 2 * M_PI / 180);
 	aspect = (double)scene->res.x / (double)scene->res.y;
 	dir.x = 2 * ((double)x + 0.5) / (double)scene->res.x;
 	dir.y = 2 * ((double)y + 0.5) / (double)scene->res.y;
-	dir.x = (dir.x  - 1)* aspect * fov;
+	dir.x = (dir.x - 1) * aspect * fov;
 	dir.y = (1 - dir.y) * fov;
 	dir.z = 1.0;
 	dir = to_world(dir, camera);
 	dir = vec_norm(dir);
-	
 	return (dir);
 }
 
-int		selector(t_scene *s, t_camera *cam, t_xyz ray, t_object *object)
+int				selector(t_scene *s, t_camera *cam, t_xyz ray, t_object *object)
 {
-	int		t;
+	int			t;
 
 	t = 0;
 	if (object->id == SPHERE)
@@ -101,11 +100,11 @@ static void		render_color(t_camera *cam, t_scene *s, t_xyz ray)
 	s->mhave.color = light_color_shadow(s, cam, ray);
 }
 
-void	raytrace(t_camera *camera, t_scene *scene)
+void			raytrace(t_camera *camera, t_scene *scene)
 {
-	int		x;
-	int		y;
-	t_xyz	ray_dir;
+	int			x;
+	int			y;
+	t_xyz		ray_dir;
 
 	x = 0;
 	while (x < scene->res.x)

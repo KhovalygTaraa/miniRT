@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 00:34:23 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/29 09:06:43 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/31 23:55:59 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_blstadd_back(t_bilist **lst, t_bilist *new)
 {
 	t_bilist	*tmp;
 
-	if(*lst)
+	if (*lst)
 	{
 		tmp = *lst;
 		while (tmp->next)

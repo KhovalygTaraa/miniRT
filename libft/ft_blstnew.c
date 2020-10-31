@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 23:24:22 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/29 09:06:55 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/11/01 00:00:17 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_bilist	*ft_blstnew(void *content)
 {
 	t_bilist	*new;
 
-	if(!(new = (t_bilist*)malloc(sizeof(t_bilist))))
+	if (!(new = (t_bilist*)malloc(sizeof(t_bilist))))
 		return (NULL);
 	new->content = content;
 	new->next = NULL;

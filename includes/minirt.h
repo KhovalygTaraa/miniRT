@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/21 17:36:13 by hovalygta         #+#    #+#             */
-/*   Updated: 2020/10/31 01:05:56 by swquinc          ###   ########.fr       */
+/*   Created: 2020/09/21 17:36:13 by swquinc           #+#    #+#             */
+/*   Updated: 2020/10/31 23:53:06 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ double		cap(t_plane plane, t_xyz origin, t_xyz ray);
 void		create_bmp(t_scene *scene);
 void		free_all(t_scene *scene);
 void		raytrace(t_camera *camera, t_scene *scene);
-void		start_rt(t_scene *t_scene);
+void		start_rt(t_scene *scene);
 int			sphere(t_scene *scene, t_camera *camera, t_xyz ray, t_sphere sp);
 int			plane(t_scene *scene, t_camera *camera, t_xyz ray, t_plane plane);
 int			square(t_scene *scene, t_camera *camera, t_xyz ray, t_square sq);
 int			triangle(t_scene *scene, t_camera *cam, t_xyz ray, t_triangle tr);
-int			cylinder(t_scene *scene, t_camera *camera, t_xyz ray, t_cylinder cy);
+int			cylinder(t_scene *scene, t_camera *cam, t_xyz ray, t_cylinder cy);
 int			circle(t_scene *scene, t_camera *camera, t_xyz ray, t_circle cr);
 int			selector(t_scene *s, t_camera *cam, t_xyz ray, t_object *object);
 void		parsing(char *rt_file, t_scene *scene);
@@ -82,4 +82,5 @@ t_xyz		vec_cross(t_xyz vec, t_xyz vec2);
 double		vec_smth(t_xyz vec, t_xyz vec2);
 double		vec_dot(t_xyz vec1, t_xyz vec2);
 double		vec_length(t_xyz vec);
+
 #endif

@@ -6,18 +6,18 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 20:45:20 by hovalygtara       #+#    #+#             */
-/*   Updated: 2020/10/07 00:51:07 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/31 23:58:46 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	array2_free(char **array)
+static void		array2_free(char **array)
 {
-	int		i;
+	int			i;
 
 	i = 0;
-	while(array[i] != NULL)
+	while (array[i] != NULL)
 	{
 		free(array[i]);
 		i++;
@@ -25,10 +25,10 @@ static void	array2_free(char **array)
 	free(array);
 }
 
-static int	delimiter(char *str)
+static int		delimiter(char *str)
 {
-	int		i;
-	int		num;
+	int			i;
+	int			num;
 
 	num = 1;
 	i = 0;
@@ -42,7 +42,7 @@ static int	delimiter(char *str)
 
 static float	plus_minus(int b, int a, int i, int delimiter)
 {
-	float	res;
+	float		res;
 
 	if (a == 0 && b == 0)
 		return (0);
@@ -55,17 +55,18 @@ static float	plus_minus(int b, int a, int i, int delimiter)
 		res = (float)b - ((float)a / delimiter);
 	return (res);
 }
-float		ft_atof(const char *str)
+
+float			ft_atof(const char *str)
 {
-	float	res;
-	char	**nums;
-	int		i;
-	int		a;
-	int		b;
+	float		res;
+	char		**nums;
+	int			i;
+	int			a;
+	int			b;
 
 	i = 1;
 	a = 0;
-	if(!(nums = ft_split(str, '.')))
+	if (!(nums = ft_split(str, '.')))
 		return (0);
 	while (nums[a] != NULL)
 		a++;
