@@ -6,7 +6,7 @@
 #    By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 19:48:56 by hovalygta         #+#    #+#              #
-#    Updated: 2020/10/31 20:15:53 by hovalygta        ###   ########.fr        #
+#    Updated: 2020/11/01 01:49:19 by hovalygta        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,9 +72,5 @@ fclean: clean
 	make fclean -C $(LIBFT_DIR)
 
 re: fclean all
-
-# leaks:
-#     valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s \
-#     ./miniRT ./scenes/plane.rt --save
 
 .PHONY: all clean fclean re leaks
