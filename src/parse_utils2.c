@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 19:20:38 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/31 02:50:17 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/31 23:35:07 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	parse_circle(t_scene *scene, t_cylinder cy, double height)
 	if (!(obj = (t_object*)malloc(sizeof(t_object))))
 		errors_handler(MALLOC_ERR, scene);
 	obj->id = CIRCLE;
-	obj->circle.coord = vec_sum(cy.coord, vec_mpl(vec_norm(cy.orient), height));
+	obj->circle.coord = vec_sum(cy.coord, vec_mpl(cy.orient, height));
 	obj->circle.orient = cy.orient;
 	obj->circle.diam = cy.diam;
 	obj->circle.rgb = cy.rgb;

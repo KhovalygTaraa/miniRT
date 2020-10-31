@@ -42,7 +42,7 @@ LIBFT_A			=	$(LIBFT_DIR)/libft.a
 LIBMLX_A		=	$(LIBMLX_DIR)/libmlx.a
 
 CC				=	gcc
-FLAGS			=	-Wall -Wextra -Werror
+# FLAGS			=	-Wall -Wextra -Werror
 # FLAGS			+=	-g3
 OPENGL			=	-framework OpenGL -framework AppKit
 INCLUDES		= 	-I includes -I $(LIBFT_DIR) -I $(LIBMLX_DIR)

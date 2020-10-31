@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 01:51:05 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/31 05:48:41 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/31 23:31:41 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static t_xyz	cylinder_normal(t_cylinder cy, t_xyz p)
 	t = cap(cy_plane, p, cy.orient);
 	if (t != __INT_MAX__)
 	{
-		vec = vec_sum(cy.coord, vec_mpl(cy.orient, -t));
+		vec = vec_sum(cy.coord, vec_mpl(cy.orient, t * -1));
 		vec = vec_norm(vec_sub(p, vec));
 		return (vec);
 	}

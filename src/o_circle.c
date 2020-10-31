@@ -6,7 +6,7 @@
 /*   By: swquinc <swquinc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 23:02:16 by swquinc           #+#    #+#             */
-/*   Updated: 2020/10/30 03:48:51 by swquinc          ###   ########.fr       */
+/*   Updated: 2020/10/31 21:38:37 by swquinc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,4 @@ int		circle(t_scene *scene, t_camera *camera, t_xyz ray, t_circle cr)
 		return (1);
 	}
 	return (0);
-	// if (a > (cr.diam / 2))
-	// 	return (0);
-	// scene->mhave.dist2 = t;
-	// scene->mhave.cur = cr.rgb;
-	// return (1);
 }
